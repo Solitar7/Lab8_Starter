@@ -61,10 +61,12 @@ describe('Basic user flow for Website', () => {
     var pItem = await page.$('product-item');
     var root = await page.evaluateHandle((element) => element.shadowRoot, pItem);
     var button = await root.$('button');
-    var textBefore = await root.$eval('button', (element) => element.innerText);
+    var innerTextBefore = await button.getProperty('innerText');
+    var textBefore = await innerTextBefore.jsonValue();
     expect(textBefore).toBe("Add to Cart");
     await button.click();
-    var textAfter = await root.$eval('button', (element) => element.innerText);
+    var innerTextAfter = await button.getProperty('innerText');
+    var textAfter = await innerTextAfter.jsonValue();
     expect(textAfter).toBe("Remove from Cart");
   }, 2500);
 
@@ -81,7 +83,8 @@ describe('Basic user flow for Website', () => {
       prodItem = prodItems[index];
       var root = await page.evaluateHandle((element) => element.shadowRoot, prodItem);
       var button = await root.$('button');
-      var text = await page.evaluate((element) => element.innerText, button);
+      var innerText = await button.getProperty('innerText');
+      var text = await innerText.jsonValue();
       if (text === "Add to Cart"){
         await button.click();
       }
@@ -104,7 +107,8 @@ describe('Basic user flow for Website', () => {
       var prodItem = prodItems[index];
       var root = await page.evaluateHandle((element) => element.shadowRoot, prodItem);
       var button = await root.$('button');
-      var text = await page.evaluate((element) => element.innerText, button);
+      var innerText = await button.getProperty('innerText');
+      var text = await innerText.jsonValue();
       expect(text).toBe("Remove from Cart");
     }
     var count = await page.$('#cart-count');
@@ -133,7 +137,8 @@ describe('Basic user flow for Website', () => {
       prodItem = prodItems[index];
       var root = await page.evaluateHandle((element) => element.shadowRoot, prodItem);
       var button = await root.$('button');
-      var text = await page.evaluate((element) => element.innerText, button);
+      var innerText = await button.getProperty('innerText');
+      var text = await innerText.jsonValue();
       if (text === "Remove from Cart"){
         await button.click();
       }
@@ -157,7 +162,8 @@ describe('Basic user flow for Website', () => {
       var prodItem = prodItems[index];
       var root = await page.evaluateHandle((element) => element.shadowRoot, prodItem);
       var button = await root.$('button');
-      var text = await page.evaluate((element) => element.innerText, button);
+      var innerText = await button.getProperty('innerText');
+      var text = await innerText.jsonValue();
       expect(text).toBe("Add to Cart");
     }
     var count = await page.$('#cart-count');
