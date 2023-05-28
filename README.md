@@ -6,3 +6,5 @@ Editor: Yuning Wen
 2. Yes if the returned value can only be checked in this way. So for testing a particular function independently it should be no.
 3. Yes, at least part of the functions. But to the part of sending message from one user to another, it should be hard to test since unit test should be tested locally with no sending message actions included.
 4. Yes, absolutely. It should be an easy unit test which should be considered when designing tests.
+
+![screenshot](testsResult.png)
