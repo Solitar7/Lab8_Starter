@@ -1,2 +1,3 @@
 # Lab 8 - Starter
 1. I would fit my automated tests within a Github action that runs whenever code is pushed. Though I may also have some manual tests locally before push my codes, automated tests within a Github action helps testing in a more general environment, and others may also see the result from the action.
+2. Yes if the returned value can only be checked in this way. So for testing a particular function independently it should be no.
