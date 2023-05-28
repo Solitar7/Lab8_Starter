@@ -1,1 +1,2 @@
 # Lab 8 - Starter
+1. I would fit my automated tests within a Github action that runs whenever code is pushed. Though I may also have some manual tests locally before push my codes, automated tests within a Github action helps testing in a more general environment, and others may also see the result from the action.
