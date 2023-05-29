@@ -90,7 +90,8 @@ describe('Basic user flow for Website', () => {
       }
     }
     var count = await page.$('#cart-count');
-    var countVal = await page.evaluate((element) => element.innerText, count);
+    var countText = await count.getProperty('innerText');
+    var countVal = await countText.jsonValue();
     expect(countVal).toBe("20");
   }, 10000);
 
@@ -112,7 +113,8 @@ describe('Basic user flow for Website', () => {
       expect(text).toBe("Remove from Cart");
     }
     var count = await page.$('#cart-count');
-    var countVal = await page.evaluate((element) => element.innerText, count);
+    var countText = await count.getProperty('innerText');
+    var countVal = await countText.jsonValue();
     expect(countVal).toBe("20");
   }, 10000);
 
@@ -144,7 +146,8 @@ describe('Basic user flow for Website', () => {
       }
     }
     var count = await page.$('#cart-count');
-    var countVal = await page.evaluate((element) => element.innerText, count);
+    var countText = await count.getProperty('innerText');
+    var countVal = await countText.jsonValue();
     expect(countVal).toBe("0");
   }, 10000);
 
@@ -167,7 +170,8 @@ describe('Basic user flow for Website', () => {
       expect(text).toBe("Add to Cart");
     }
     var count = await page.$('#cart-count');
-    var countVal = await page.evaluate((element) => element.innerText, count);
+    var countText = await count.getProperty('innerText');
+    var countVal = await countText.jsonValue();
     expect(countVal).toBe("0");
   }, 10000);
 
